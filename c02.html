@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Atmospheric CO2 differential modelling</title>
+
+<script src="c02_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="c02_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="c02_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="c02_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="c02_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="c02_files/navigation-1.1/tabsets.js"></script>
+<link href="c02_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="c02_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Atmospheric CO2 differential modelling</h1>
+
+</div>
+
+
+<p><br/></p>
+<p>A model delineating the interactions between atmospheric, surface and deep ocean (ASD) carbon reservoirs was produced; the amount of carbon in any reservoir changes as a function of time and was modelled numerically using differential equations. Three equations were developed describing changes in atmospheric <span class="math inline">\((\dot M_a)\)</span>, surface ocean <span class="math inline">\((\dot M_s)\)</span> and deep ocean <span class="math inline">\((\dot M_d)\)</span> carbon.</p>
+<p><br/></p>
+<p><span class="math inline">\(\dot M ̇_a=-k_{sa} M_a+k_{as} M_s+F(t)\)</span></p>
+<p><span class="math inline">\(\dot M ̇_s=k_{sa} M_a+k_{sd} M_d-k_{as} M_s-k_{ds} M_s\)</span></p>
+<p><span class="math inline">\(\dot M ̇_d=k_{ds} M_s-k_{sd} M_d\)</span></p>
+<p><br/></p>
+<p>The model was calibrated using atmospheric CO2 hindcast data, this allowed for known historical values to be compared to the carbon model. A graph was plotted of the carbon model’s atmospheric carbon content against the Mauna Loa data; there was a large discrepancy between each data trend, approximately 90 pgC in 1988.</p>
+<p>The discrepancy was found to be a result of the carbon model not accounting for the change in surface ocean pH levels as its carbon content increases. This was accounted for in the model by introducing the Revelle factor to two of the differential equations thus creating a Bolin-ASD model. The equations were:</p>
+<p><br/></p>
+<p><span class="math inline">\(\frac{dM_a}{dt}=k_{as} M_s+Rk_{as} (M_s-m_s)-k_{sa} M_a+F(t)\)</span></p>
+<p><span class="math inline">\(\frac{dM_s}{dt}=k_{sa} M_a+k_{sd} M_d-k_{as} m_s+Rk_{as} (M_s-m_s )-k_{ds} M_s\)</span></p>
+<p><br/></p>
+<div class="figure">
+<img src="chart%201.png" alt="Figure 1" />
+<p class="caption">Figure 1</p>
+</div>
+<p><br/></p>
+<p>The Bolin-ASD model data agreed with the hindcast data – with only a 20 pgC discrepancy in 1983. The model effectively described a pre-industrial steady state.</p>
+<p>After successful hindcasting the model was ready for input; this was provided as a range of future scenarios - The model was used to forecast a family of scenarios taken from the IPCC special report on emissions scenarios (SRES) ; three scenarios were selected describing high, medium and low carbon production groups, projections of climate change are contingent upon future anthropogenic action, the model interpreted the economic, political and environmental implications of the A1C,B2, B3 scenarios along with the AIM, MESSAGE and MiniCAM modelling approaches. (Appendix A) In the B1 low-medium low emissions scenario, it showed good agreement across the three modelling approaches, atmospheric carbon content peaked around 2090 decreasing exponentially after this with a state of zero carbon emissions being met in 2150.</p>
+<p>In the B2 medium-low/high scenario, each approach increased linearly until 2050. In the AIM model a steady state was reached in 2250; in each case the CO2 content in 250 years was at least three times higher than today ranging from 1583 – 2043 pgC.</p>
+<p>In the A1C fossil fuel intensive scenario, by 2250 projected atmospheric CO2 for AIM, MiniCAM and MESSAGE were 4779 pgC, 2533 pgC and 4073 pgC respectively – ranging between a threefold and fivefold increase. Although our model included the most significant carbon reservoirs, it omitted other real-world elements such as marine biota interaction within the surface ocean, sediment deposit within the deep ocean and weathering within the atmosphere. Our model will not have perfect parity with historical data; future models should aim to incorporate these reservoirs to more accurately describe reality.</p>
+<p>The ASD model, described by the system of differential equations were found, using the eigenvalue method and computer algebra package to have an exact solution -</p>
+<p><br/></p>
+<div class="figure">
+<img src="fig1.png" />
+
+</div>
+<p>Apendix A</p>
+<div class="figure">
+<img src="chart%202.png" />
+
+</div>
+<p><br /></p>
+<div class="figure">
+<img src="chart%203.png" />
+
+</div>
+<hr />
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
